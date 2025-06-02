@@ -60,11 +60,6 @@ class ChamadoSuporte:
             "tipo_chamado": self.tipo_chamado.name,
             "descricao": self.descricao,
             "timestamp": self.timestamp.isoformat(),
-            "prioridades": {
-                "cliente": self.prioridade_cliente,
-                "chamado": self.prioridade_chamado,
-                "total": self.prioridade_total
-            }
         }
     
     def from_dict(cls, data: dict) -> dict:
