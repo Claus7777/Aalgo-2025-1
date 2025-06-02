@@ -29,21 +29,21 @@ class ChamadoSuporte:
         self.timestamp = timestamp
 
         #Ve se o tipo_cliente está no enum tipoCliente
-        if isinstance(tipo_cliente, TipoCliente):
+        if isinstance(tipo_cliente, tipoCliente):
             self.tipo_cliente = tipo_cliente
-        elif tipo_cliente in [item.value for item in TipoCliente]:
-            self.tipo_cliente = TipoCliente(tipo_cliente)
+        elif tipo_cliente in [item.value for item in tipoCliente]:
+            self.tipo_cliente = tipoCliente(tipo_cliente)
         else:
-            valid_options = ', '.join([item.name for item in TipoCliente])
+            valid_options = ', '.join([item.name for item in tipoCliente])
             raise ValueError(f"Tipo de cliente inválido: {tipo_cliente}. Opções: {valid_options}")
 
         #Mesma coisa com o tipo_chamado
-        if isinstance(tipo_chamado, TipoChamado):
+        if isinstance(tipo_chamado, tipoChamado):
             self.tipo_chamado = tipo_chamado
-        elif tipo_chamado in [item.value for item in TipoChamado]:
-            self.tipo_chamado = TipoChamado(tipo_chamado)
+        elif tipo_chamado in [item.value for item in tipoChamado]:
+            self.tipo_chamado = tipoChamado(tipo_chamado)
         else:
-            valid_options = ', '.join([item.name for item in TipoChamado])
+            valid_options = ', '.join([item.name for item in tipoChamado])
             raise ValueError(f"Tipo de chamado inválido: {tipo_chamado}. Opções: {valid_options}")
     
     def calcular_prioridade_total(self):
