@@ -77,4 +77,3 @@ class ChamadoSuporte:
             descricao = data['descricao'],
             timestamp = datetime.fromisoformat(data['timestamp'])
         )
-
