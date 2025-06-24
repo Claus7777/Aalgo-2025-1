@@ -1,6 +1,8 @@
 from enum import Enum
 from datetime import datetime
 
+from pydantic import BaseModel
+
 class tipoCliente(Enum):
     PRIORITARIO = 1
     SEM_PRIORIDADE = 2
@@ -11,6 +13,14 @@ class tipoChamado(Enum):
     IMPACTA_PRODUCAO = 2
     SEM_IMPACTO = 3
     DUVIDA = 4
+
+class ChamadoSuporteModel(BaseModel):
+    id_chamado: int
+    cliente_nome: str
+    tipo_cliente: tipoCliente
+    tipo_chamado: tipoChamado
+    descricao: str
+    timestamp: datetime
 
 class ChamadoSuporte:
 
@@ -48,7 +58,7 @@ class ChamadoSuporte:
     
     def calcular_prioridade_total(self):
         """Retorn tuple com (tipo_chamado, tipo_cliente)"""
-        prioridade_total = (self.tipo_chamado, self.tipo_cliente)
+        prioridade_total = (self.tipo_chamado.value, self.tipo_cliente.value)
         return prioridade_total
     
     def to_dict(self) -> dict:
@@ -56,8 +66,8 @@ class ChamadoSuporte:
         return {
             "id_chamado": self.id_chamado,
             "cliente_nome": self.cliente_nome,
-            "tipo_cliente": self.tipo_cliente.name,
-            "tipo_chamado": self.tipo_chamado.name,
+            "tipo_cliente": self.tipo_cliente.value,
+            "tipo_chamado": self.tipo_chamado.value,
             "descricao": self.descricao,
             "timestamp": self.timestamp.isoformat(),
         }
