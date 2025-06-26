@@ -1,7 +1,7 @@
-🛠️ Sistema de Chamados de Suporte com Prioridade
+# 🛠️ Sistema de Chamados de Suporte com Prioridade
 
 Este é um sistema de gerenciamento de chamados de suporte técnico que utiliza uma fila de prioridade para organizar e processar os chamados com base no tipo de cliente e tipo de problema. A API é construída com FastAPI e oferece notificações desktop ao adicionar ou processar chamados.
-🚀 Funcionalidades
+## 🚀 Funcionalidades
 
     📥 Adicionar chamados à fila com prioridade.
 
@@ -11,7 +11,7 @@ Este é um sistema de gerenciamento de chamados de suporte técnico que utiliza 
 
     🧠 Classificação automática com base em enums definidos para tipo de cliente e tipo de chamado.
 
-🧱 Tecnologias Utilizadas
+## 🧱 Tecnologias Utilizadas
 
     FastAPI - Web framework moderno para construção da API.
 
@@ -22,13 +22,14 @@ Este é um sistema de gerenciamento de chamados de suporte técnico que utiliza 
     Python heapq - Estrutura de dados de fila de prioridade (heap).
 
 
-📬 Endpoints da API
+## 📬 Endpoints da API
 POST /chamado
 
 Adiciona um chamado à fila de prioridade.
 Exemplo de corpo da requisição:
 
-{
+```{
+
   "id_chamado": 101,
   "cliente_nome": "Empresa XYZ",
   "tipo_cliente": 1,
@@ -36,6 +37,7 @@ Exemplo de corpo da requisição:
   "descricao": "Sistema lento durante operação crítica",
   "timestamp": "2025-06-26T15:30:00"
 }
+```
 
     tipo_cliente:
 
@@ -58,7 +60,7 @@ Exemplo de corpo da requisição:
 GET /proximo_chamado
 
 Processa o próximo chamado com maior prioridade na fila.
-📋 Lógica de Priorização
+## 📋 Lógica de Priorização
 
 Os chamados são organizados por uma tupla de prioridade:
 
@@ -70,8 +72,8 @@ Menores valores têm prioridade mais alta, ou seja:
 
     DUVIDA (4) e DEMONSTRACAO (3) têm a menor prioridade.
 
-🖥️ Notificações Desktop
+## 🖥️ Notificações Desktop
 
 A cada chamado adicionado ou processado, uma notificação será exibida no desktop com o resumo do chamado.
 
-    ⚠️ É necessário estar com o ambiente gráfico ativo (não funciona em servidores sem interface gráfica).
+### ⚠️ É necessário estar com o ambiente gráfico ativo (não funciona em servidores sem interface gráfica).
