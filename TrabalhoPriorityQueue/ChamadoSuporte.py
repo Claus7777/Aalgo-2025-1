@@ -22,6 +22,10 @@ class ChamadoSuporteModel(BaseModel):
     descricao: str
     timestamp: datetime
 
+class AgenteSuporte(BaseModel):
+    id_agente: int
+    nome: str
+
 class ChamadoSuporte:
 
     def __init__(
@@ -99,7 +103,8 @@ class ChamadoSuporte:
             "descricao": self.descricao,
             "timestamp": self.timestamp.isoformat(),
             "prioridade_escalada": self.prioridade_escalada,
-            "tempo_estimado_resolucao": self.tempo_estimado_resolucao.total_seconds()
+            "tempo_estimado_resolucao": self.tempo_estimado_resolucao.total_seconds(),
+            "agente_atribuido": self.agente_atribuido.dict() if self.agente_atribuido else None
         }
     
     def from_dict(cls, data: dict) -> dict:
